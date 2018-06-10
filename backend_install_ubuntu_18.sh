@@ -20,8 +20,7 @@ fi
 echo "Updatin exsit package..."
 apt clean all && apt autoremove && apt update && apt upgrade -y && apt dist-upgrade -y
 echo "Install necessary package..."
-apt install git wget python-setuptools build-essential ntpdate htop -y
-easy_install pip
+apt install git wget python-setuptools python-pip build-essential ntpdate htop -y
 echo "Setting system timezone..."
 cp -f /usr/share/zoneinfo/Asia/Taipei /etc/localtime && ntpdate us.pool.ntp.org
 echo "Installing libsodium..."
