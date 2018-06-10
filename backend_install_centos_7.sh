@@ -26,7 +26,7 @@ yum -y groupinstall "Development Tools"
 echo "Disabling firewalld..."
 systemctl stop firewalld && systemctl disable firewalld
 echo "Setting system timezone..."
-cp -f /usr/share/zoneinfo/Asia/Taipei /etc/localtime && ntpdate us.pool.ntp.org
+timedatectl set-timezone Asia/Taipei && systemctl stop ntpd.service && ntpdate us.pool.ntp.org
 echo "Installing libsodium..."
 wget https://github.com/jedisct1/libsodium/releases/download/1.0.16/libsodium-1.0.16.tar.gz
 tar xf libsodium-1.0.16.tar.gz && cd libsodium-1.0.16
@@ -38,8 +38,8 @@ echo "Installing Shadowsocksr server from GitHub..."
 mkdir /soft && cd /soft
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git
 cd shadowsocks
-pip install -r requirements.txt
 pip install --upgrade pip
+pip install -r requirements.txt
 echo "Generating config file..."
 cp apiconfig.py userapiconfig.py
 cp config.json user-config.json
