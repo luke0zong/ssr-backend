@@ -59,7 +59,8 @@ sed -i -e "s/NODE_ID = 1/NODE_ID = ${node_id}/g" -e "s/MYSQL_HOST = '127.0.0.1'/
 echo "Running system optimization and enable Google BBR..."
 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
-yum --enablerepo=elrepo-kernel install kernel-ml -y
+yum remove kernel-headers -y
+yum --enablerepo=elrepo-kernel install kernel-ml kernel-ml-headers -y
 echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
 cat >> /etc/security/limits.conf << EOF
 * soft nofile 51200
