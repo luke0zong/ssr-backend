@@ -80,11 +80,5 @@ net.ipv4.tcp_wmem = 4096 65536 67108864
 net.ipv4.tcp_mtu_probing = 1
 EOF
 sysctl -p
-echo "System require a reboot to complete the installation process, press Y to continue, or press any key else to exit this script."
-read is_reboot
-if [[ is_reboot =~ ^[Y,y,Yes,YES]$ ]]
-then
-        reboot
-else
-	exit 1
-fi
+cd /soft/shadowsocks
+echo "Installation complete, please run python server.py to test."
