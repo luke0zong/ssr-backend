@@ -34,7 +34,8 @@ echo "Installing Shadowsocksr server from GitHub..."
 mkdir /soft && cd /soft
 git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git
 cd shadowsocks
-pip install --upgrade pip && pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 echo "Generating config file..."
 cp apiconfig.py userapiconfig.py
 cp config.json user-config.json
