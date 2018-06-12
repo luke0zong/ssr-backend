@@ -61,6 +61,7 @@ rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
 yum remove kernel-headers -y
 yum --enablerepo=elrepo-kernel install kernel-ml kernel-ml-headers -y
+grub2-set-default 0
 echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
 cat >> /etc/security/limits.conf << EOF
 * soft nofile 51200
