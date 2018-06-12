@@ -18,7 +18,7 @@ then
 	exit 0
 fi
 echo "Updatin exsit package..."
-yum clean all && rm -rf /var/cache/yum && update -y
+yum clean all && rm -rf /var/cache/yum && yum update -y
 echo "Install necessary package..."
 yum install epel-release -y && yum makecache
 yum install python-pip git wget net-tools htop ntp -y
