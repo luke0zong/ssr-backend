@@ -21,7 +21,7 @@ echo "Updatin exsit package..."
 yum clean all && rm -rf /var/cache/yum && yum update -y
 echo "Install necessary package..."
 yum install epel-release -y && yum makecache
-yum install python-pip git wget net-tools htop ntp -y
+yum install python-pip git net-tools htop ntp -y
 yum -y groupinstall "Development Tools"
 echo "Disabling firewalld..."
 systemctl stop firewalld && systemctl disable firewalld
