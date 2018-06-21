@@ -18,7 +18,7 @@ then
 	exit 0
 fi
 echo "Updatin exsit package..."
-apt clean all && apt autoremove && apt update && apt upgrade -y && apt dist-upgrade -y
+apt clean all && apt autoremove -y && apt update && apt upgrade -y && apt dist-upgrade -y
 echo "Install necessary package..."
 apt install git python-setuptools python-pip build-essential ntpdate htop -y
 echo "Setting system timezone..."
