@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo /soft/shadowsocks/logrun.sh
