@@ -91,9 +91,9 @@ EOF
 sysctl -p
 echo "System require a reboot to complete the installation process, press Y to continue, or press any key else to exit this script."
 read is_reboot
-if [[ is_reboot =~ ^[Y,y,Yes,YES]$ ]]
-then
-        reboot
+if [[ ${is_reboot} == "y" || ${is_reboot} == "Y" ]]; then
+    reboot
 else
-	exit 1
+    echo -e "${green}Info:${plain} Reboot has been canceled..."
+    exit 0
 fi
