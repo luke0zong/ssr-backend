@@ -82,6 +82,6 @@ EOF
 sysctl -p
 echo "Setting startup script..."
 ln -fs /lib/systemd/system/rc-local.service /etc/systemd/system/rc-local.service
-wget -O rc.local https://github.com/YihanH/ss-panel-mod-v3-backend-server-install-scripts/blob/master/rc.local_ubuntu_18 && chmod +x rc.local
+wget -O rc.local https://raw.githubusercontent.com/YihanH/ss-panel-mod-v3-backend-server-install-scripts/master/rc.local_ubuntu_18 && chmod +x rc.local
 mv -f rc.local /etc
 echo "Installation complete, please run python /soft/shadowsocks/server.py to test."
