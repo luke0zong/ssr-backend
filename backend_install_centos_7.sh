@@ -26,7 +26,7 @@ yum -y groupinstall "Development Tools"
 echo "Disabling firewalld..."
 systemctl stop firewalld && systemctl disable firewalld
 echo "Setting system timezone..."
-timedatectl set-timezone Asia/Taipei && systemctl stop ntpd.service && ntpdate us.pool.ntp.org
+timedatectl set-timezone Asia/Shanghai && systemctl stop ntpd.service && ntpdate us.pool.ntp.org
 echo "Installing libsodium..."
 wget https://github.com/jedisct1/libsodium/releases/download/1.0.16/libsodium-1.0.16.tar.gz
 tar xf libsodium-1.0.16.tar.gz && cd libsodium-1.0.16
@@ -35,8 +35,8 @@ echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
 ldconfig
 cd ../ && rm -rf libsodium*
 echo "Installing Shadowsocksr server from GitHub..."
-mkdir /soft && cd /soft
-git clone -b manyuser https://github.com/esdeathlove/shadowsocks.git
+mkdir ~/ssr && cd ~/ssr
+git clone -b manyuser https://github.com/luke0zong/shadowsocks.git
 cd shadowsocks
 pip install --upgrade pip
 pip install -r requirements.txt
@@ -64,12 +64,12 @@ yum --enablerepo=elrepo-kernel install kernel-ml kernel-ml-headers -y
 grub2-set-default 0
 echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
 cat >> /etc/security/limits.conf << EOF
-* soft nofile 51200
-* hard nofile 51200
+* soft nofile 512000
+* hard nofile 1024000
 EOF
-ulimit -n 51200
+ulimit -n 512000
 cat >> /etc/sysctl.conf << EOF
-fs.file-max = 51200
+fs.file-max = 512000
 net.core.default_qdisc = fq
 net.core.rmem_max = 67108864
 net.core.wmem_max = 67108864
